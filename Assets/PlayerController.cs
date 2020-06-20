@@ -20,11 +20,17 @@ public class PlayerController : MonoBehaviour
     public float jumpVelocity = 50f;
 
     //public const float VELOCITY_DAMPENING_ADD = -1f;
-    public const float FIXED_VELOCITY_DAMPEN_MULTIPLIER = 0.97f;
+    public const float FIXED_VELOCITY_DAMPEN_MULTIPLIER = 0.8f;
+
+    public const float FIXED_VELOCITY_DAMPEN_MULTIPLIER_AIR = 0.9999f;
 
     public const float VELOCITY_MOVE_MULTIPLIER = 2f;
 
     private const float FIXED_VELOCITY_DAMPEN_MULTIPLIER_MINIMUM_VELOCITY = 0.1f;
+
+    public float velocityMult;
+    private Animator anim;
+    private bool isGroundedLast = false;
 
     
 
@@ -32,6 +38,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         velocity = new Vector3();
+        velocityMult = FIXED_VELOCITY_DAMPEN_MULTIPLIER;
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -62,9 +70,14 @@ public class PlayerController : MonoBehaviour
 
         if(!isGrounded){
             velocity.y += gravity * Time.deltaTime;
+            velocityMult = FIXED_VELOCITY_DAMPEN_MULTIPLIER_AIR;
         }else{
             if(Input.GetKey("space")){
                 velocity.y = jumpVelocity;
+            }
+            velocityMult = FIXED_VELOCITY_DAMPEN_MULTIPLIER;
+            if(!isGroundedLast){
+                anim.Play("Base Layer.Landed");
             }
         }
         
@@ -80,6 +93,8 @@ public class PlayerController : MonoBehaviour
         cc.Move((velocity + move) * Time.deltaTime);
 
         velocity += move * VELOCITY_MOVE_MULTIPLIER * Time.deltaTime;
+
+        isGroundedLast = isGrounded;
         
     }
 
@@ -92,7 +107,7 @@ public class PlayerController : MonoBehaviour
 */
 
     float dampenVelocities(float velocity){
-        float velAfter = velocity * FIXED_VELOCITY_DAMPEN_MULTIPLIER;
+        float velAfter = velocity * velocityMult;
         return  Math.Abs(velAfter) < FIXED_VELOCITY_DAMPEN_MULTIPLIER_MINIMUM_VELOCITY ? 0 : velAfter;
     }
 
