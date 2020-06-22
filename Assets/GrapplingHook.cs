@@ -11,6 +11,15 @@ public class GrapplingHook : MonoBehaviour
 
     private bool attached = false;
 
+    public GameObject hookFrom;
+
+    public GameObject armJoint;
+
+    public float handRotationSpeed;
+
+     private Quaternion _lookRotation;
+     private Vector3 _direction;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +29,7 @@ public class GrapplingHook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       lineRenderer.SetPosition(0, transform.position);
+       lineRenderer.SetPosition(0, hookFrom.transform.position);
 
         if(Input.GetMouseButtonDown(1)){
             //clicked
@@ -36,6 +45,9 @@ public class GrapplingHook : MonoBehaviour
 
                 ropeLength = Vector3.Distance(transform.position, hit.point);
                 ropeEnd = hit.point;
+
+                
+
                 lineRenderer.enabled = true;
                 attached = true;
             }
@@ -46,7 +58,13 @@ public class GrapplingHook : MonoBehaviour
         }else if(Input.GetMouseButton(1)){
             //held
 
-           
+           if(attached){
+
+               _direction = (ropeEnd - armJoint.transform.position).normalized;
+                _lookRotation = Quaternion.LookRotation(_direction);
+                armJoint.transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * handRotationSpeed);
+
+           }
              
 
         }else if(Input.GetMouseButtonUp(1)){
