@@ -62,7 +62,7 @@ public class GrapplingHook : MonoBehaviour
         if(Input.GetMouseButton(1)){
             if(Vector3.Distance(transform.position, ropeEnd) >= ropeLength && attached){
 
-                    gameObject.GetComponent<PlayerController>().velocity +=  Vector3.Normalize(ropeEnd - transform.position) * 5f;
+                    gameObject.GetComponent<PlayerController>().velocity +=  Vector3.Normalize(ropeEnd - transform.position) * 2f;
                     //
 
             }

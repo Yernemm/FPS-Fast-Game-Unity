@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     //public const float VELOCITY_DAMPENING_ADD = -1f;
     public const float FIXED_VELOCITY_DAMPEN_MULTIPLIER = 0.8f;
 
-    public const float FIXED_VELOCITY_DAMPEN_MULTIPLIER_AIR = 0.9999f;
+    public const float FIXED_VELOCITY_DAMPEN_MULTIPLIER_AIR = 0.999f;
 
     public const float VELOCITY_MOVE_MULTIPLIER = 2f;
 
