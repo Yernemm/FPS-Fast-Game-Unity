@@ -20,10 +20,15 @@ public class GrapplingHook : MonoBehaviour
      private Quaternion _lookRotation;
      private Vector3 _direction;
 
+     public LayerMask playerMask;
+
+     private Quaternion initialHandRotation;
+
     // Start is called before the first frame update
     void Start()
     {
         lineRenderer.enabled = false;
+        initialHandRotation = armJoint.transform.rotation;
     }
 
     // Update is called once per frame
@@ -39,7 +44,7 @@ public class GrapplingHook : MonoBehaviour
             RaycastHit hit;
             var ray =  Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 
-            if(Physics.Raycast(ray, out hit)){
+            if(Physics.Raycast(ray, out hit, 1000f, ~playerMask)){
                 Debug.Log(hit.point);
                 lineRenderer.SetPosition(1, hit.point);
 
@@ -62,7 +67,7 @@ public class GrapplingHook : MonoBehaviour
 
                _direction = (ropeEnd - armJoint.transform.position).normalized;
                 _lookRotation = Quaternion.LookRotation(_direction);
-                armJoint.transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * handRotationSpeed);
+                armJoint.transform.rotation = _lookRotation; //Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * handRotationSpeed);
 
            }
              
@@ -72,6 +77,7 @@ public class GrapplingHook : MonoBehaviour
 
             lineRenderer.enabled = false;
             attached = false;
+            armJoint.transform.rotation = initialHandRotation;
         }
         
     }
