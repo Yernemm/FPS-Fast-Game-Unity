@@ -24,6 +24,8 @@ public class GrapplingHook : MonoBehaviour
 
      private Quaternion initialHandRotation;
 
+     private GameObject hookedTo;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +57,12 @@ public class GrapplingHook : MonoBehaviour
 
                 lineRenderer.enabled = true;
                 attached = true;
+                hookedTo = hit.collider.gameObject;
+
+                if(hookedTo.tag == "PowerCube"){
+                    hookedTo.GetComponent<PowerBlockInteraction>().isPlayerAttached = true;
+                }
+
             }
 
             
@@ -78,6 +86,12 @@ public class GrapplingHook : MonoBehaviour
             lineRenderer.enabled = false;
             attached = false;
             armJoint.transform.rotation = initialHandRotation;
+
+
+             if(hookedTo.tag == "PowerCube"){
+                    hookedTo.GetComponent<PowerBlockInteraction>().isPlayerAttached = false;
+            }
+
         }
         
     }
