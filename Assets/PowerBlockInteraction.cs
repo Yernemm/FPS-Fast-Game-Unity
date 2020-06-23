@@ -15,6 +15,9 @@ public class PowerBlockInteraction : MonoBehaviour
 
     public GameObject innerCube;
 
+    
+    public ParticleSystem particles;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,8 +34,11 @@ public class PowerBlockInteraction : MonoBehaviour
 
 
             if(initSize >= 1f) {
+                //Just charged
                 initSize = 1.1f;
                 isCharged = true;
+
+                particles.Play();
             }
 
             innerCube.transform.localScale = new Vector3(initSize, initSize, initSize);
