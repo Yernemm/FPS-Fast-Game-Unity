@@ -4901,7 +4901,7 @@ BoxCollider:
   m_GameObject: {fileID: 7014683930331085445}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -5016,5 +5016,7 @@ MonoBehaviour:
   innerGrowRate: 16
   innerDecayRate: 5
   isPlayerAttached: 0
+  isCharged: 0
   innerCube: {fileID: 7014683930331085445}
   particles: {fileID: 569773323}
+  rocket: {fileID: 6175702510160443769, guid: 09dd5171ba37f904da46b63caddf37d8, type: 3}

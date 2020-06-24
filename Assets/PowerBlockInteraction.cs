@@ -11,12 +11,15 @@ public class PowerBlockInteraction : MonoBehaviour
 
     public bool isPlayerAttached = false;
 
-    private bool isCharged = false;
+    public bool isCharged = false;
 
     public GameObject innerCube;
 
     
     public ParticleSystem particles;
+
+    public GameObject rocket;
+    private float rocketSpawnCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +52,18 @@ public class PowerBlockInteraction : MonoBehaviour
             initSize = initSize < 0 ? 0 : initSize;
             innerCube.transform.localScale = new Vector3(initSize, initSize, initSize);
         }
+
+        if(!isCharged){
+            rocketSpawnCount += Time.deltaTime;
+
+            if(rocketSpawnCount > 5f){
+                rocketSpawnCount = 0f;
+                Instantiate(rocket, transform.position, Quaternion.identity);
+            }
+        }
+        
+
+        
         
     }
 }
