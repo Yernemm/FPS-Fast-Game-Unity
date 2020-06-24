@@ -14,7 +14,7 @@ public class RocketEngine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = 1500f;
+        speed = 2300f;
         player = GameObject.Find("Player");
     }
 
