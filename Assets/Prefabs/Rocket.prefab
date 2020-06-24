@@ -152,6 +152,7 @@ GameObject:
   - component: {fileID: 6175702510160443766}
   - component: {fileID: 6175702510160443760}
   - component: {fileID: -7257404068377256843}
+  - component: {fileID: 2202358396888929008}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Untagged
@@ -963,3 +964,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2202358396888929008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6175702510160443769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cc463669601ad946b289cbf9cf0192f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

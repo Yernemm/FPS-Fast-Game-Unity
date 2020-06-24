@@ -21,6 +21,8 @@ public class PowerBlockInteraction : MonoBehaviour
     public GameObject rocket;
     private float rocketSpawnCount = 0;
 
+    public AudioSource chargedSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +44,7 @@ public class PowerBlockInteraction : MonoBehaviour
                 isCharged = true;
 
                 particles.Play();
+                chargedSound.Play();
             }
 
             innerCube.transform.localScale = new Vector3(initSize, initSize, initSize);
