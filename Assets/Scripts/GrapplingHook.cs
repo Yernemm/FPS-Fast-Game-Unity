@@ -46,7 +46,7 @@ public class GrapplingHook : MonoBehaviour
             RaycastHit hit;
             var ray =  Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 
-            if(Physics.Raycast(ray, out hit, 1000f, ~playerMask)){
+            if(Physics.Raycast(ray, out hit, 250f, ~playerMask)){
                 Debug.Log(hit.point);
                 lineRenderer.SetPosition(1, hit.point);
 
