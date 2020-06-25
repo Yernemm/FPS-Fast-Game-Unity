@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_RocketTrail
+  m_Name: Shader Graphs_RocketTrail Big
   m_Shader: {fileID: -6465566751694194690, guid: 70a01170d81b0194f869ea6f1073f491,
     type: 3}
   m_ShaderKeywords: 
@@ -21,8 +21,8 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
-    - Vector1_6165530B: 0.8
-    - Vector1_96418CF5: 39.69
-    - Vector1_A6760023: 37.4
+    - Vector1_6165530B: 0.4
+    - Vector1_96418CF5: 10
+    - Vector1_A6760023: 10.3
     m_Colors:
-    - Color_3EA1F7A0: {r: 2.8358867, g: 0.055262152, b: 0, a: 0}
+    - Color_3EA1F7A0: {r: 2.0192707, g: 0, b: 0.11878063, a: 0}

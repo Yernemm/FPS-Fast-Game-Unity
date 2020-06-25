@@ -18,15 +18,18 @@ public class PowerBlockInteraction : MonoBehaviour
     
     public ParticleSystem particles;
 
-    public GameObject rocket;
+    public GameObject[] rockets;
     private float rocketSpawnCount = 0;
 
     public AudioSource chargedSound;
 
+    System.Random random;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        random = new System.Random();
+
     }
 
     // Update is called once per frame
@@ -61,7 +64,8 @@ public class PowerBlockInteraction : MonoBehaviour
 
             if(rocketSpawnCount > 5f){
                 rocketSpawnCount = 0f;
-                Instantiate(rocket, transform.position, Quaternion.identity);
+                 int rocketId = random.Next(0, rockets.Length);
+                Instantiate(rockets[rocketId], transform.position, Quaternion.identity);
             }
         }
         

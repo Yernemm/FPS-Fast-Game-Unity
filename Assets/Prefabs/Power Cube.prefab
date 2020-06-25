@@ -5020,7 +5020,10 @@ MonoBehaviour:
   isCharged: 0
   innerCube: {fileID: 7014683930331085445}
   particles: {fileID: 569773323}
-  rocket: {fileID: 6175702510160443769, guid: 09dd5171ba37f904da46b63caddf37d8, type: 3}
+  rockets:
+  - {fileID: 6175702510160443769, guid: 09dd5171ba37f904da46b63caddf37d8, type: 3}
+  - {fileID: 6175702510160443769, guid: c4863b77046aeb843bf4e9e44da89835, type: 3}
+  - {fileID: 6175702510160443769, guid: 746f69b0c8fde814ab3628bc842b1a9f, type: 3}
   chargedSound: {fileID: 8988384175010584476}
 --- !u!82 &8988384175010584476
 AudioSource:

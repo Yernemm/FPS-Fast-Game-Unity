@@ -5,7 +5,7 @@ using UnityEngine;
 public class RocketEngine : MonoBehaviour
 {
 
-    public float speed = 50f;
+    public float speed = 2300f;
     public float turnSpeed = 5f;
 
     public GameObject player;
@@ -14,7 +14,6 @@ public class RocketEngine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = 2300f;
         player = GameObject.Find("Player");
     }
 

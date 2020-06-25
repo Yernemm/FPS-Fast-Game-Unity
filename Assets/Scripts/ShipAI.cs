@@ -10,13 +10,15 @@ public class ShipAI : MonoBehaviour
 
     public GameObject player;
 
-    public GameObject rocket;
+    public GameObject[] rockets;
     private float rocketSpawnCount = 0;
+    System.Random random;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
+         random = new System.Random();
     }
 
     // Update is called once per frame
@@ -29,7 +31,9 @@ public class ShipAI : MonoBehaviour
 
             if(rocketSpawnCount > 2f){
                 rocketSpawnCount = 0f;
-                Instantiate(rocket, transform.position, Quaternion.identity);
+                int rocketId = random.Next(0, rockets.Length);
+                Instantiate(rockets[rocketId], transform.position, Quaternion.identity);
+                
             }
        
     }
