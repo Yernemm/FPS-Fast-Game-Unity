@@ -340,7 +340,7 @@ MonoBehaviour:
     m_Value: 0
   contrast:
     m_OverrideState: 1
-    m_Value: 11.3
+    m_Value: 15.1
     min: -100
     max: 100
   colorFilter:
@@ -356,7 +356,7 @@ MonoBehaviour:
     max: 180
   saturation:
     m_OverrideState: 1
-    m_Value: 16.7
+    m_Value: 12.9
     min: -100
     max: 100
 --- !u!114 &-1684832449576404647
@@ -415,11 +415,11 @@ MonoBehaviour:
     min: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 4.96
+    m_Value: 2
     min: 0
   scatter:
     m_OverrideState: 1
-    m_Value: 0.761
+    m_Value: 0.562
     min: 0
     max: 1
   clamp:

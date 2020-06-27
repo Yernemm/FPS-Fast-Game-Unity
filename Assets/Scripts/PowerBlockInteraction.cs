@@ -23,20 +23,28 @@ public class PowerBlockInteraction : MonoBehaviour
 
     public AudioSource chargedSound;
 
+    private Vector3 initPos;
+
+    private float initSize;
+
+    public GameObject redLight;
+    public GameObject blueLight;
+
     System.Random random;
 
     // Start is called before the first frame update
     void Start()
     {
         random = new System.Random();
-
+        initPos = transform.position;
+        initSize = innerCube.transform.localScale.x;
     }
 
     // Update is called once per frame
     void Update()
     {
         if(isPlayerAttached && !isCharged){
-            float initSize = innerCube.transform.localScale.x;
+            initSize = innerCube.transform.localScale.x;
             initSize += Time.deltaTime * innerGrowRate / 100f;
             
 
@@ -48,6 +56,9 @@ public class PowerBlockInteraction : MonoBehaviour
 
                 particles.Play();
                 chargedSound.Play();
+
+                redLight.SetActive(false);
+                blueLight.SetActive(true);
             }
 
             innerCube.transform.localScale = new Vector3(initSize, initSize, initSize);
@@ -65,12 +76,15 @@ public class PowerBlockInteraction : MonoBehaviour
             if(rocketSpawnCount > 5f){
                 rocketSpawnCount = 0f;
                  int rocketId = random.Next(0, rockets.Length);
-                Instantiate(rockets[rocketId], transform.position, Quaternion.identity);
+                 Instantiate(rockets[rocketId], transform.position, Quaternion.identity);
             }
         }
-        
 
+        //spinny
         
-        
+        transform.position = new Vector3(initPos.x, initPos.y + Mathf.Sin(Time.time * 2f) * 4f, initPos.z);
+        transform.Rotate(new Vector3(Time.deltaTime * 200f * (initSize * initSize + 0.1f), 0, 0), Space.World);
+
+
     }
 }
