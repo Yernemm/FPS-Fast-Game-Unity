@@ -26,6 +26,8 @@ public class GrapplingHook : MonoBehaviour
 
      private GameObject hookedTo;
 
+     private bool canHookBool;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,16 +39,18 @@ public class GrapplingHook : MonoBehaviour
     void Update()
     {
        lineRenderer.SetPosition(0, hookFrom.transform.position);
+       
+        RaycastHit hit;
+        var ray =  Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        canHookBool = Physics.Raycast(ray, out hit, 250f, ~playerMask);
 
         if(Input.GetMouseButtonDown(1)){
             //clicked
 
             
 
-            RaycastHit hit;
-            var ray =  Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 
-            if(Physics.Raycast(ray, out hit, 250f, ~playerMask)){
+            if(this.canHook()){
                 Debug.Log(hit.point);
                 lineRenderer.SetPosition(1, hit.point);
 
@@ -112,5 +116,9 @@ public class GrapplingHook : MonoBehaviour
                 gameObject.GetComponent<PlayerController>().velocity = Vector3.Normalize(gameObject.GetComponent<PlayerController>().velocity) * initMag;
             }
         }
+    }
+
+    public bool canHook(){
+        return canHookBool;
     }
 }

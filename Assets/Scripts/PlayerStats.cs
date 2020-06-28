@@ -11,6 +11,12 @@ public class PlayerStats : MonoBehaviour
         health = 100;
     }
 
+    private void Update() {
+        if(transform.position.y <= 0 && !this.isDead()){
+            this.damage(this.getHealth());
+        }
+    }
+
     public bool damage(int hp){
         health -= hp;
         if(health <= 0){
