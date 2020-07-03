@@ -76,7 +76,7 @@ public class PowerBlockInteraction : MonoBehaviour
             if(rocketSpawnCount > 5f){
                 rocketSpawnCount = 0f;
                  int rocketId = random.Next(0, rockets.Length);
-                 Instantiate(rockets[rocketId], transform.position, Quaternion.identity);
+                 //Instantiate(rockets[rocketId], transform.position, Quaternion.identity);
             }
         }
 

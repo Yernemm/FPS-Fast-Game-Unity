@@ -32,7 +32,7 @@ public class ShipAI : MonoBehaviour
             if(rocketSpawnCount > 2f){
                 rocketSpawnCount = 0f;
                 int rocketId = random.Next(0, rockets.Length);
-                Instantiate(rockets[rocketId], transform.position, Quaternion.identity);
+                //Instantiate(rockets[rocketId], transform.position, Quaternion.identity);
                 
             }
        

@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     private bool isGroundedLast = false;
 
+    public LayerMask playerMask;
+
     
 
     // Start is called before the first frame update
@@ -89,8 +91,14 @@ public class PlayerController : MonoBehaviour
         velocity.x = dampenVelocities(velocity.x);
         velocity.z = dampenVelocities(velocity.z);
 
+        Vector3 finalMove = (velocity + move) * Time.deltaTime;
+        RaycastHit hit;
+        bool cast = Physics.Raycast(transform.position, finalMove, out hit, finalMove.magnitude, ~playerMask);
+        if(cast){
+            velocity = Vector3.ClampMagnitude(velocity, Vector3.Magnitude(hit.point - transform.position));
+        }
 
-        cc.Move((velocity + move) * Time.deltaTime);
+        cc.Move(finalMove);
 
         velocity += move * VELOCITY_MOVE_MULTIPLIER * Time.deltaTime;
 

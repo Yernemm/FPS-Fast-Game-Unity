@@ -14,7 +14,7 @@ public class LevelSpawner : MonoBehaviour
     {
         random = new System.Random();
 
-        for(int i = 0; i < 20; i ++){
+        for(int i = 0; i < 80; i ++){
             int pieceId = random.Next(0, pieces.Length);
             Instantiate(pieces[pieceId], new Vector3(100 * i, 0f, 0f), Quaternion.Euler(0f,0f,-90f));
         }
