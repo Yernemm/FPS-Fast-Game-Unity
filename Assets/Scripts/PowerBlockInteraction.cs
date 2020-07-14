@@ -30,6 +30,8 @@ public class PowerBlockInteraction : MonoBehaviour
     public GameObject redLight;
     public GameObject blueLight;
 
+    public bool rocketsEnabled = true;
+
     System.Random random;
 
     // Start is called before the first frame update
@@ -76,7 +78,8 @@ public class PowerBlockInteraction : MonoBehaviour
             if(rocketSpawnCount > 5f){
                 rocketSpawnCount = 0f;
                  int rocketId = random.Next(0, rockets.Length);
-                 //Instantiate(rockets[rocketId], transform.position, Quaternion.identity);
+                 if(rocketsEnabled)
+                    Instantiate(rockets[rocketId], transform.position, Quaternion.identity);
             }
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -57,6 +58,10 @@ public class PlayerController : MonoBehaviour
         
 
         //cc.Move(velocity * Time.deltaTime);
+
+        if(Input.GetKeyDown("p")){
+            SceneManager.LoadScene("Lobby");
+        }
 
         
     }
